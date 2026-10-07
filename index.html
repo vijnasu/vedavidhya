@@ -6,6 +6,9 @@
     <meta name="description" content="Experience the extraordinary power of Tāntric Beejātmak Chandikā Yajna and Daśa Mahāvidyā Anuṣṭhāna with authentic Tantric practices.">
     <title>Tāntric Beejātmak Chandikā Yajna + Daśa Mahāvidyā Anuṣṭhāna</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Serif+Devanagari:wght@600;700&family=Noto+Sans+Kannada:wght@400;600;700&family=Noto+Serif+Kannada:wght@600;700&display=swap">
     <style>
         :root {
             --deep-purple: #2D1B69;
@@ -653,37 +656,107 @@
                 }
             }
         }
+        /* ---------- Language switcher ---------- */
+        .lang-switch {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 1000;
+            display: flex;
+            gap: 2px;
+            padding: 4px;
+            background: rgba(15, 8, 38, 0.85);
+            border: 1px solid var(--gold);
+            border-radius: 999px;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .lang-switch button {
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            padding: 6px 14px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .lang-switch button[data-lang="hi"] { font-family: 'Noto Sans Devanagari', sans-serif; }
+        .lang-switch button[data-lang="kn"] { font-family: 'Noto Sans Kannada', sans-serif; }
+
+        .lang-switch button:hover { background: rgba(198, 161, 104, 0.2); }
+
+        .lang-switch button[aria-pressed="true"] {
+            background: linear-gradient(135deg, var(--gold), #B58A4B);
+            color: var(--light-bg);
+            font-weight: 600;
+        }
+
+        .lang-switch button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 480px) {
+            .lang-switch { top: 10px; right: 10px; }
+            .lang-switch button { padding: 5px 10px; font-size: 0.85rem; }
+        }
+
+        /* ---------- Hindi / Kannada typography ---------- */
+        html[lang="hi"] body { font-family: 'Noto Sans Devanagari', 'Segoe UI', sans-serif; }
+        html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3 { font-family: 'Noto Serif Devanagari', Georgia, serif; }
+        html[lang="kn"] body { font-family: 'Noto Sans Kannada', 'Segoe UI', sans-serif; }
+        html[lang="kn"] h1, html[lang="kn"] h2, html[lang="kn"] h3 { font-family: 'Noto Serif Kannada', Georgia, serif; }
+
+        /* Letter-spacing breaks Indic conjuncts; uppercase has no meaning there */
+        html[lang="hi"] .btn, html[lang="kn"] .btn,
+        html[lang="hi"] h1, html[lang="kn"] h1,
+        html[lang="hi"] h2, html[lang="kn"] h2,
+        html[lang="hi"] h3, html[lang="kn"] h3 { letter-spacing: normal; }
+        html[lang="hi"] .hero h1, html[lang="kn"] .hero h1 { line-height: 1.45 !important; }
+        html[lang="kn"] .hero h1 { font-size: 2.3rem !important; }
+        html[lang="hi"] .popular, html[lang="kn"] .popular { font-size: 0.8rem; }
     </style>
 </head>
 <body class="yantra-pattern">
+    <!-- Language switcher -->
+    <nav class="lang-switch" aria-label="Language / भाषा / ಭಾಷೆ">
+        <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="hi" lang="hi" aria-pressed="false">हिंदी</button>
+        <button type="button" data-lang="kn" lang="kn" aria-pressed="false">ಕನ್ನಡ</button>
+    </nav>
+
     <!-- Hero -->
     <section class="hero">
         <div class="container">
             <span class="tantric-border" style="display: inline-block; padding: 8px 16px; margin-bottom: 30px; background: rgba(0,0,0,0.2);">
-                <span class="sacred-symbol">✨</span> 10 Days • Navarātri (Dasara) <span class="sacred-symbol">✨</span>
+                <span class="sacred-symbol">✨</span> <span data-i18n="hero.badge">10 Days • Navarātri (Dasara)</span> <span class="sacred-symbol">✨</span>
             </span>
             <h1 style="font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2;">
-                <span class="tantric-text">Tāntric Beejātmak Chandikā Yajna</span><br />
-                + <span class="tantric-text">Daśa Mahāvidyā Anuṣṭhāna</span>
+                <span class="tantric-text" data-i18n="hero.title1">Tāntric Beejātmak Chandikā Yajna</span><br />
+                + <span class="tantric-text" data-i18n="hero.title2">Daśa Mahāvidyā Anuṣṭhāna</span>
             </h1>
-            <p class="lead">Experience the extraordinary power of <strong class="tantric-text">Tantratmak Saptashati Beejaksharas</strong>, sacred <strong class="tantric-text">Mudras</strong>, and <strong class="tantric-text">Yantras</strong> with genuine <strong class="tantric-text">Dhyana Dharana</strong> connections to divine Shaktis.</p>
+            <p class="lead" data-i18n="hero.2">Experience the extraordinary power of <strong class="tantric-text">Tantratmak Saptashati Beejaksharas</strong>, sacred <strong class="tantric-text">Mudras</strong>, and <strong class="tantric-text">Yantras</strong> with genuine <strong class="tantric-text">Dhyana Dharana</strong> connections to divine Shaktis.</p>
             
             <div class="unique-feature">
-                <h3 style="color: var(--gold); margin-bottom: 10px;"><i class="fas fa-star sacred-symbol"></i> Not a Regular Chandika Yajna</h3>
-                <p>This is <strong>100 times more powerful</strong> than regular Chandika Yajnas. Our <strong>Tāntric Beejātmak Chandikā Yajna</strong> utilizes rare Tantric practices not found in common rituals, creating profound transformations through direct connections with divine energies.</p>
+                <h3 style="color: var(--gold); margin-bottom: 10px;"><i class="fas fa-star sacred-symbol"></i> <span data-i18n="hero.3">Not a Regular Chandika Yajna</span></h3>
+                <p data-i18n="hero.4">This is <strong>100 times more powerful</strong> than regular Chandika Yajnas. Our <strong>Tāntric Beejātmak Chandikā Yajna</strong> utilizes rare Tantric practices not found in common rituals, creating profound transformations through direct connections with divine energies.</p>
             </div>
             
             <div class="location-highlight">
-                <h3 style="color: var(--gold); margin-bottom: 10px;"><i class="fas fa-mountain sacred-symbol"></i> Sacred Locations</h3>
-                <p>Some anuṣṭhānas and Yajnas are carried out in powerful sacred places like the Sahyadri hill ranges, river banks, forests, and Gosalas of Karnataka to enhance spiritual potency.</p>
+                <h3 style="color: var(--gold); margin-bottom: 10px;"><i class="fas fa-mountain sacred-symbol"></i> <span data-i18n="hero.5">Sacred Locations</span></h3>
+                <p data-i18n="hero.6">Some anuṣṭhānas and Yajnas are carried out in powerful sacred places like the Sahyadri hill ranges, river banks, forests, and Gosalas of Karnataka to enhance spiritual potency.</p>
             </div>
             
             <div class="floral-divider">
                 <span>ॐ</span>
             </div>
             <div class="flex">
-                <a href="#pricing" class="btn btn-primary"><span class="sacred-symbol">💰</span> View Packages</a>
-                <a href="#unique" class="btn btn-secondary"><span class="sacred-symbol">🌟</span> Unique Features</a>
+                <a href="#pricing" class="btn btn-primary"><span class="sacred-symbol">💰</span> <span data-i18n="hero.7">View Packages</span></a>
+                <a href="#unique" class="btn btn-secondary"><span class="sacred-symbol">🌟</span> <span data-i18n="hero.8">Unique Features</span></a>
             </div>
         </div>
     </section>
@@ -691,51 +764,51 @@
     <!-- Unique Features -->
     <section id="unique" style="background: var(--dark-bg);">
         <div class="container">
-            <h2 class="text-center">What Makes Our Yajna Unique</h2>
-            <p class="lead text-center">Unlike ordinary Chandika Yajnas, our Tāntric Beejātmak Chandikā Yajna incorporates rare elements</p>
+            <h2 class="text-center" data-i18n="unique.1">What Makes Our Yajna Unique</h2>
+            <p class="lead text-center" data-i18n="unique.2">Unlike ordinary Chandika Yajnas, our Tāntric Beejātmak Chandikā Yajna incorporates rare elements</p>
             
             <div class="grid cols-1 md-cols-2" style="gap: 30px; margin-top: 50px;">
                 <div class="card card-dark sacred-glow">
-                    <h3 style="color: var(--gold); margin-bottom: 20px;"><span class="sacred-symbol">🔮</span> Tantratmak Saptashati Beejaksharas</h3>
-                    <p>We use powerful seed syllables from the Devi Saptashati that are rarely activated in common Yajnas, creating direct energetic connections with the Divine Mother.</p>
+                    <h3 style="color: var(--gold); margin-bottom: 20px;"><span class="sacred-symbol">🔮</span> <span data-i18n="unique.3">Tantratmak Saptashati Beejaksharas</span></h3>
+                    <p data-i18n="unique.4">We use powerful seed syllables from the Devi Saptashati that are rarely activated in common Yajnas, creating direct energetic connections with the Divine Mother.</p>
                     <ul class="benefits-list">
-                        <li>Specific bija mantras for precise intention manifestation</li>
-                        <li>Activation of subtle energy channels (nadis)</li>
-                        <li>Direct connection to cosmic feminine energy</li>
-                        <li>100x more potent than standard chanting</li>
+                        <li data-i18n="unique.5">Specific bija mantras for precise intention manifestation</li>
+                        <li data-i18n="unique.6">Activation of subtle energy channels (nadis)</li>
+                        <li data-i18n="unique.7">Direct connection to cosmic feminine energy</li>
+                        <li data-i18n="unique.8">100x more potent than standard chanting</li>
                     </ul>
                 </div>
                 
                 <div class="card card-dark sacred-glow">
-                    <h3 style="color: #c4b5fd; margin-bottom: 20px;"><span class="sacred-symbol">🙏</span> Sacred Mudras & Yantras</h3>
-                    <p>Our rituals incorporate hand gestures (mudras) and mystical diagrams (yantras) that are typically reserved for advanced Tantric practitioners.</p>
+                    <h3 style="color: #c4b5fd; margin-bottom: 20px;"><span class="sacred-symbol">🙏</span> <span data-i18n="unique.9">Sacred Mudras & Yantras</span></h3>
+                    <p data-i18n="unique.10">Our rituals incorporate hand gestures (mudras) and mystical diagrams (yantras) that are typically reserved for advanced Tantric practitioners.</p>
                     <ul class="benefits-list">
-                        <li>Rare hand gestures that channel specific energies</li>
-                        <li>Empowered yantras that act as cosmic receivers</li>
-                        <li>Precise geometrical patterns for energy amplification</li>
-                        <li>Visualization techniques that enhance manifestation</li>
+                        <li data-i18n="unique.11">Rare hand gestures that channel specific energies</li>
+                        <li data-i18n="unique.12">Empowered yantras that act as cosmic receivers</li>
+                        <li data-i18n="unique.13">Precise geometrical patterns for energy amplification</li>
+                        <li data-i18n="unique.14">Visualization techniques that enhance manifestation</li>
                     </ul>
                 </div>
                 
                 <div class="card card-dark sacred-glow">
-                    <h3 style="color: #34d399; margin-bottom: 20px;"><span class="sacred-symbol">🧘</span> Real Dhyana Dharana Practices</h3>
-                    <p>Genuine meditation and concentration techniques that create direct connections with respective Shaktis, not just symbolic worship.</p>
+                    <h3 style="color: #34d399; margin-bottom: 20px;"><span class="sacred-symbol">🧘</span> <span data-i18n="unique.15">Real Dhyana Dharana Practices</span></h3>
+                    <p data-i18n="unique.16">Genuine meditation and concentration techniques that create direct connections with respective Shaktis, not just symbolic worship.</p>
                     <ul class="benefits-list">
-                        <li>Deep meditative states for actual energy transfer</li>
-                        <li>Focused concentration on specific divine aspects</li>
-                        <li>Direct experiential connection with deities</li>
-                        <li>Personalized guidance for maximum benefit</li>
+                        <li data-i18n="unique.17">Deep meditative states for actual energy transfer</li>
+                        <li data-i18n="unique.18">Focused concentration on specific divine aspects</li>
+                        <li data-i18n="unique.19">Direct experiential connection with deities</li>
+                        <li data-i18n="unique.20">Personalized guidance for maximum benefit</li>
                     </ul>
                 </div>
                 
                 <div class="card card-dark sacred-glow">
-                    <h3 style="color: #f9a8d4; margin-bottom: 20px;"><span class="sacred-symbol">⚡</span> 100x More Powerful</h3>
-                    <p>The combination of these rare elements makes our Tāntric Beejātmak Chandikā Yajna exponentially more powerful than standard rituals.</p>
+                    <h3 style="color: #f9a8d4; margin-bottom: 20px;"><span class="sacred-symbol">⚡</span> <span data-i18n="unique.21">100x More Powerful</span></h3>
+                    <p data-i18n="unique.22">The combination of these rare elements makes our Tāntric Beejātmak Chandikā Yajna exponentially more powerful than standard rituals.</p>
                     <ul class="benefits-list">
-                        <li>Faster and more dramatic results</li>
-                        <li>Deeper spiritual transformation</li>
-                        <li>Stronger protection from negative forces</li>
-                        <li>More potent removal of karmic obstacles</li>
+                        <li data-i18n="unique.23">Faster and more dramatic results</li>
+                        <li data-i18n="unique.24">Deeper spiritual transformation</li>
+                        <li data-i18n="unique.25">Stronger protection from negative forces</li>
+                        <li data-i18n="unique.26">More potent removal of karmic obstacles</li>
                     </ul>
                 </div>
             </div>
@@ -745,40 +818,40 @@
     <!-- Benefits -->
     <section id="benefits">
         <div class="container">
-            <h2 class="text-center">Transformative Benefits</h2>
-            <p class="lead text-center">Experience profound transformation through these sacred rituals</p>
+            <h2 class="text-center" data-i18n="benefits.1">Transformative Benefits</h2>
+            <p class="lead text-center" data-i18n="benefits.2">Experience profound transformation through these sacred rituals</p>
             
             <div class="grid cols-1 md-cols-2" style="gap: 30px; margin-top: 50px;">
                 <div class="card card-light sacred-glow">
-                    <h3 style="color: var(--gold); margin-bottom: 20px;"><span class="sacred-symbol">🔥</span> Tāntric Beejātmak Chandikā Yajna</h3>
-                    <p>This powerful fire ritual performed from sunrise to mid-noon creates a divine connection with the cosmic feminine energy.</p>
+                    <h3 style="color: var(--gold); margin-bottom: 20px;"><span class="sacred-symbol">🔥</span> <span data-i18n="benefits.3">Tāntric Beejātmak Chandikā Yajna</span></h3>
+                    <p data-i18n="benefits.4">This powerful fire ritual performed from sunrise to mid-noon creates a divine connection with the cosmic feminine energy.</p>
                     <ul class="benefits-list">
-                        <li>Remove obstacles blocking your success</li>
-                        <li>Protection from negative energies and ill-wishers</li>
-                        <li>Break free from repetitive negative patterns</li>
-                        <li>Resolve financial struggles and attract abundance</li>
-                        <li>Heal strained family relationships</li>
-                        <li>Overcome career stagnation</li>
+                        <li data-i18n="benefits.5">Remove obstacles blocking your success</li>
+                        <li data-i18n="benefits.6">Protection from negative energies and ill-wishers</li>
+                        <li data-i18n="benefits.7">Break free from repetitive negative patterns</li>
+                        <li data-i18n="benefits.8">Resolve financial struggles and attract abundance</li>
+                        <li data-i18n="benefits.9">Heal strained family relationships</li>
+                        <li data-i18n="benefits.10">Overcome career stagnation</li>
                     </ul>
                 </div>
                 
                 <div class="card card-light sacred-glow">
-                    <h3 style="color: #c4b5fd; margin-bottom: 20px;"><span class="sacred-symbol">🌙</span> Daśa Mahāvidyā Anuṣṭhāna</h3>
-                    <p>Connecting with the ten wisdom goddesses unlocks different aspects of divine feminine energy for holistic transformation.</p>
+                    <h3 style="color: #c4b5fd; margin-bottom: 20px;"><span class="sacred-symbol">🌙</span> <span data-i18n="benefits.11">Daśa Mahāvidyā Anuṣṭhāna</span></h3>
+                    <p data-i18n="benefits.12">Connecting with the ten wisdom goddesses unlocks different aspects of divine feminine energy for holistic transformation.</p>
                     <ul class="benefits-list">
-                        <li>Find solutions to complex life problems</li>
-                        <li>Gain clarity during confusing times</li>
-                        <li>Heal from emotional trauma and heartbreak</li>
-                        <li>Remove obstacles in marriage prospects</li>
-                        <li>Protection during travel and new ventures</li>
-                        <li>Overcome legal and property disputes</li>
+                        <li data-i18n="benefits.13">Find solutions to complex life problems</li>
+                        <li data-i18n="benefits.14">Gain clarity during confusing times</li>
+                        <li data-i18n="benefits.15">Heal from emotional trauma and heartbreak</li>
+                        <li data-i18n="benefits.16">Remove obstacles in marriage prospects</li>
+                        <li data-i18n="benefits.17">Protection during travel and new ventures</li>
+                        <li data-i18n="benefits.18">Overcome legal and property disputes</li>
                     </ul>
                 </div>
             </div>
             
             <div class="location-highlight">
-                <h3 style="color: var(--gold); margin-bottom: 10px;"><i class="fas fa-tree sacred-symbol"></i> Special Locations</h3>
-                <p>Selected Yajnas are performed in powerful natural settings including river banks, forest clearings, and mountain caves of the Sahyadri ranges to amplify spiritual energies.</p>
+                <h3 style="color: var(--gold); margin-bottom: 10px;"><i class="fas fa-tree sacred-symbol"></i> <span data-i18n="benefits.19">Special Locations</span></h3>
+                <p data-i18n="benefits.20">Selected Yajnas are performed in powerful natural settings including river banks, forest clearings, and mountain caves of the Sahyadri ranges to amplify spiritual energies.</p>
             </div>
         </div>
     </section>
@@ -786,58 +859,58 @@
     <!-- FAQ Section -->
     <section style="background: var(--dark-bg);">
         <div class="container">
-            <h2 class="text-center">Frequently Asked Questions</h2>
-            <p class="lead text-center">Common questions about our Tāntric rituals</p>
+            <h2 class="text-center" data-i18n="faq.1">Frequently Asked Questions</h2>
+            <p class="lead text-center" data-i18n="faq.2">Common questions about our Tāntric rituals</p>
             
             <div class="grid cols-1" style="gap: 20px; margin-top: 50px;">
                 <div class="card card-dark sacred-glow">
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>What is the significance of the Beejāksharas in this Yajna?</span>
+                            <span data-i18n="faq.3">What is the significance of the Beejāksharas in this Yajna?</span>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>Beejāksharas are sacred seed syllables that contain concentrated spiritual energy. In our Tāntric Beejātmak Chandikā Yajna, these powerful sounds are activated to create direct connections with specific aspects of the Divine Mother, making the ritual exponentially more powerful than standard Yajnas.</p>
+                            <p data-i18n="faq.4">Beejāksharas are sacred seed syllables that contain concentrated spiritual energy. In our Tāntric Beejātmak Chandikā Yajna, these powerful sounds are activated to create direct connections with specific aspects of the Divine Mother, making the ritual exponentially more powerful than standard Yajnas.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>How is this different from regular Chandika Yajna?</span>
+                            <span data-i18n="faq.5">How is this different from regular Chandika Yajna?</span>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>While regular Chandika Yajnas follow standard Vedic procedures, our Tāntric Beejātmak Chandikā Yajna incorporates rare Tantric elements including specific Beejāksharas, Mudras, Yantras, and Dhyana Dharana practices that are typically reserved for advanced practitioners. This makes it approximately 100 times more powerful according to Tantric texts.</p>
+                            <p data-i18n="faq.6">While regular Chandika Yajnas follow standard Vedic procedures, our Tāntric Beejātmak Chandikā Yajna incorporates rare Tantric elements including specific Beejāksharas, Mudras, Yantras, and Dhyana Dharana practices that are typically reserved for advanced practitioners. This makes it approximately 100 times more powerful according to Tantric texts.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>Can I participate remotely?</span>
+                            <span data-i18n="faq.7">Can I participate remotely?</span>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>Yes, the sacred energy generated during the Yajna transcends physical boundaries. When you register, we will connect with you energetically and provide guidance on how to align yourself with the rituals remotely. Many participants experience profound effects regardless of their physical location.</p>
+                            <p data-i18n="faq.8">Yes, the sacred energy generated during the Yajna transcends physical boundaries. When you register, we will connect with you energetically and provide guidance on how to align yourself with the rituals remotely. Many participants experience profound effects regardless of their physical location.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>How long until I see results?</span>
+                            <span data-i18n="faq.9">How long until I see results?</span>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>Results vary based on individual karma and receptivity. Some participants report immediate shifts during or right after the rituals, while others experience gradual transformations over weeks or months. The powerful energy generated continues to work on your subtle body long after the physical rituals are completed.</p>
+                            <p data-i18n="faq.10">Results vary based on individual karma and receptivity. Some participants report immediate shifts during or right after the rituals, while others experience gradual transformations over weeks or months. The powerful energy generated continues to work on your subtle body long after the physical rituals are completed.</p>
                         </div>
                     </div>
                     
                     <div class="faq-item">
                         <div class="faq-question">
-                            <span>What should I do during the Yajna days?</span>
+                            <span data-i18n="faq.11">What should I do during the Yajna days?</span>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>We provide specific guidelines to all participants to maximize the benefits. Generally, we recommend maintaining a sattvic diet, practicing meditation, avoiding negative environments, and keeping your focus on spiritual practices during the Yajna period. Detailed instructions are sent after registration.</p>
+                            <p data-i18n="faq.12">We provide specific guidelines to all participants to maximize the benefits. Generally, we recommend maintaining a sattvic diet, practicing meditation, avoiding negative environments, and keeping your focus on spiritual practices during the Yajna period. Detailed instructions are sent after registration.</p>
                         </div>
                     </div>
                 </div>
@@ -848,98 +921,98 @@
     <!-- Mahavidyas -->
     <section id="mahavidyas" style="background: var(--dark-bg);">
         <div class="container">
-            <h2 class="text-center">The Divine Daśa Mahāvidyās</h2>
-            <p class="lead text-center">Ten wisdom goddesses addressing specific life challenges</p>
+            <h2 class="text-center" data-i18n="mahavidyas.1">The Divine Daśa Mahāvidyās</h2>
+            <p class="lead text-center" data-i18n="mahavidyas.2">Ten wisdom goddesses addressing specific life challenges</p>
             
             <div class="grid cols-1 md-cols-2 lg-cols-5" style="gap: 20px;">
                 <!-- Kali -->
                 <div class="card card-dark sacred-glow deity-card">
                     <div class="deity-image" style="background: linear-gradient(to bottom, #1f2937, #111827); width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px;">
-                        <img src="images/1_Kālī.png" alt="Goddess Kali" style="height: 100%; object-fit: contain;">
+                        <img src="images/1_Kālī.png" alt="Goddess Kali" data-i18n-alt="alt.kali" style="height: 100%; object-fit: contain;">
                     </div>
-                    <h3 style="color: #f87171; font-weight: bold; font-size: 1.1rem;">1. Kālī</h3>
-                    <p style="font-size: 0.9rem;"><strong>For:</strong> Removing deep-rooted fears, ending negative cycles, protection from enemies</p>
+                    <h3 style="color: #f87171; font-weight: bold; font-size: 1.1rem;" data-i18n="mahavidyas.3">1. Kālī</h3>
+                    <p style="font-size: 0.9rem;" data-i18n="mahavidyas.4"><strong>For:</strong> Removing deep-rooted fears, ending negative cycles, protection from enemies</p>
                 </div>
                 
                 <!-- Tara -->
                 <div class="card card-dark sacred-glow deity-card">
                     <div class="deity-image" style="background: linear-gradient(to bottom, #1e3a8a, #1e40af); width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px;">
-                        <img src="images/2_Tārā.png" alt="Goddess Tārā" style="height: 100%; object-fit: contain;">
+                        <img src="images/2_Tārā.png" alt="Goddess Tārā" data-i18n-alt="alt.tara" style="height: 100%; object-fit: contain;">
                     </div>
-                    <h3 style="color: #93c5fd; font-weight: bold; font-size: 1.1rem;">2. Tārā</h3>
-                    <p style="font-size: 0.9rem;"><strong>For:</strong> Immediate protection during travel, overcoming accidents, healing from illnesses</p>
+                    <h3 style="color: #93c5fd; font-weight: bold; font-size: 1.1rem;" data-i18n="mahavidyas.5">2. Tārā</h3>
+                    <p style="font-size: 0.9rem;" data-i18n="mahavidyas.6"><strong>For:</strong> Immediate protection during travel, overcoming accidents, healing from illnesses</p>
                 </div>
                 
                 <!-- Tripurasundari -->
                 <div class="card card-dark sacred-glow deity-card">
                     <div class="deity-image" style="background: linear-gradient(to bottom, #5b21b6, #7c3aed); width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px;">
-                        <img src="images/3_Tripurasundarī.png" alt="Goddess Tripurasundarī" style="height: 100%; object-fit: contain;">
+                        <img src="images/3_Tripurasundarī.png" alt="Goddess Tripurasundarī" data-i18n-alt="alt.tripurasundari" style="height: 100%; object-fit: contain;">
                     </div>
-                    <h3 style="color: #d8b4fe; font-weight: bold; font-size: 1.1rem;">3. Tripurasundarī</h3>
-                    <p style="font-size: 0.9rem;"><strong>For:</strong> Attracting loving relationships, enhancing beauty, improving social status</p>
+                    <h3 style="color: #d8b4fe; font-weight: bold; font-size: 1.1rem;" data-i18n="mahavidyas.7">3. Tripurasundarī</h3>
+                    <p style="font-size: 0.9rem;" data-i18n="mahavidyas.8"><strong>For:</strong> Attracting loving relationships, enhancing beauty, improving social status</p>
                 </div>
                 
                 <!-- Bhuvaneshvari -->
                 <div class="card card-dark sacred-glow deity-card">
                     <div class="deity-image" style="background: linear-gradient(to bottom, #065f46, #047857); width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px;">
-                        <img src="images/4_Bhuvaneśvarī.png" alt="Goddess Bhuvaneśvarī" style="height: 100%; object-fit: contain;">
+                        <img src="images/4_Bhuvaneśvarī.png" alt="Goddess Bhuvaneśvarī" data-i18n-alt="alt.bhuvaneshvari" style="height: 100%; object-fit: contain;">
                     </div>
-                    <h3 style="color: #34d399; font-weight: bold; font-size: 1.1rem;">4. Bhuvaneśvarī</h3>
-                    <p style="font-size: 0.9rem;"><strong>For:</strong> Career advancement, business success, leadership opportunities</p>
+                    <h3 style="color: #34d399; font-weight: bold; font-size: 1.1rem;" data-i18n="mahavidyas.9">4. Bhuvaneśvarī</h3>
+                    <p style="font-size: 0.9rem;" data-i18n="mahavidyas.10"><strong>For:</strong> Career advancement, business success, leadership opportunities</p>
                 </div>
                 
                 <!-- Chinnamasta -->
                 <div class="card card-dark sacred-glow deity-card">
                     <div class="deity-image" style="background: linear-gradient(to bottom, #7f1d1d, #b91c1c); width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px;">
-                        <img src="images/5_Chinnamasta.jpg" alt="Goddess Chinnamasta" style="height: 100%; object-fit: contain;">
+                        <img src="images/5_Chinnamasta.jpg" alt="Goddess Chinnamasta" data-i18n-alt="alt.chinnamasta" style="height: 100%; object-fit: contain;">
                     </div>
-                    <h3 style="color: #fca5a5; font-weight: bold; font-size: 1.1rem;">5. Chinnamastā</h3>
-                    <p style="font-size: 0.9rem;"><strong>For:</strong> Letting go of attachments, overcoming addictions, breaking unhealthy bonds</p>
+                    <h3 style="color: #fca5a5; font-weight: bold; font-size: 1.1rem;" data-i18n="mahavidyas.11">5. Chinnamastā</h3>
+                    <p style="font-size: 0.9rem;" data-i18n="mahavidyas.12"><strong>For:</strong> Letting go of attachments, overcoming addictions, breaking unhealthy bonds</p>
                 </div>
                 
                 <!-- Bhairavi -->
                 <div class="card card-dark sacred-glow deity-card">
                     <div class="deity-image" style="background: linear-gradient(to bottom, #78350f, #92400e); width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px;">
-                        <img src="images/6_Bhairavī.png" alt="Goddess Bhairavī" style="height: 100%; object-fit: contain;">
+                        <img src="images/6_Bhairavī.png" alt="Goddess Bhairavī" data-i18n-alt="alt.bhairavi" style="height: 100%; object-fit: contain;">
                     </div>
-                    <h3 style="color: #fdba74; font-weight: bold; font-size: 1.1rem;">6. Bhairavī</h3>
-                    <p style="font-size: 0.9rem;"><strong>For:</strong> Winning legal battles, overcoming competitors, removing black magic effects</p>
+                    <h3 style="color: #fdba74; font-weight: bold; font-size: 1.1rem;" data-i18n="mahavidyas.13">6. Bhairavī</h3>
+                    <p style="font-size: 0.9rem;" data-i18n="mahavidyas.14"><strong>For:</strong> Winning legal battles, overcoming competitors, removing black magic effects</p>
                 </div>
                 
                 <!-- Dhumavati -->
                 <div class="card card-dark sacred-glow deity-card">
                     <div class="deity-image" style="background: linear-gradient(to bottom, #374151, #4b5563); width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px;">
-                        <img src="images/7_Dhūmāvatī.png" alt="Goddess Dhūmāvatī" style="height: 100%; object-fit: contain;">
+                        <img src="images/7_Dhūmāvatī.png" alt="Goddess Dhūmāvatī" data-i18n-alt="alt.dhumavati" style="height: 100%; object-fit: contain;">
                     </div>
-                    <h3 style="color: #d1d5db; font-weight: bold; font-size: 1.1rem;">7. Dhūmāvatī</h3>
-                    <p style="font-size: 0.9rem;"><strong>For:</strong> Finding peace after loss, overcoming poverty, spiritual development in hardship</p>
+                    <h3 style="color: #d1d5db; font-weight: bold; font-size: 1.1rem;" data-i18n="mahavidyas.15">7. Dhūmāvatī</h3>
+                    <p style="font-size: 0.9rem;" data-i18n="mahavidyas.16"><strong>For:</strong> Finding peace after loss, overcoming poverty, spiritual development in hardship</p>
                 </div>
                 
                 <!-- Bagalamukhi -->
                 <div class="card card-dark sacred-glow deity-card">
                     <div class="deity-image" style="background: linear-gradient(to bottom, #713f12, #854d0e); width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px;">
-                        <img src="images/8_Bagalāmukhī.png" alt="Goddess Bagalāmukhī" style="height: 100%; object-fit: contain;">
+                        <img src="images/8_Bagalāmukhī.png" alt="Goddess Bagalāmukhī" data-i18n-alt="alt.bagalamukhi" style="height: 100%; object-fit: contain;">
                     </div>
-                    <h3 style="color: #fde047; font-weight: bold; font-size: 1.1rem;">8. Bagalāmukhī</h3>
-                    <p style="font-size: 0.9rem;"><strong>For:</strong> Silencing enemies, winning debates, stopping gossip and false accusations</p>
+                    <h3 style="color: #fde047; font-weight: bold; font-size: 1.1rem;" data-i18n="mahavidyas.17">8. Bagalāmukhī</h3>
+                    <p style="font-size: 0.9rem;" data-i18n="mahavidyas.18"><strong>For:</strong> Silencing enemies, winning debates, stopping gossip and false accusations</p>
                 </div>
                 
                 <!-- Matangi -->
                 <div class="card card-dark sacred-glow deity-card">
                     <div class="deity-image" style="background: linear-gradient(to bottom, #5b21b6, #7c3aed); width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px;">
-                        <img src="images/9_Mātaṅgī.png" alt="Goddess Mātaṅgī" style="height: 100%; object-fit: contain;">
+                        <img src="images/9_Mātaṅgī.png" alt="Goddess Mātaṅgī" data-i18n-alt="alt.matangi" style="height: 100%; object-fit: contain;">
                     </div>
-                    <h3 style="color: #c4b5fd; font-weight: bold; font-size: 1.1rem;">9. Mātaṅgī</h3>
-                    <p style="font-size: 0.9rem;"><strong>For:</strong> Excelling in studies, mastering arts, gaining recognition for talents</p>
+                    <h3 style="color: #c4b5fd; font-weight: bold; font-size: 1.1rem;" data-i18n="mahavidyas.19">9. Mātaṅgī</h3>
+                    <p style="font-size: 0.9rem;" data-i18n="mahavidyas.20"><strong>For:</strong> Excelling in studies, mastering arts, gaining recognition for talents</p>
                 </div>
                 
                 <!-- Kamala -->
                 <div class="card card-dark sacred-glow deity-card">
                     <div class="deity-image" style="background: linear-gradient(to bottom, #064e3b, #065f46); width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px;">
-                        <img src="images/10_Kamalā.png" alt="Goddess Kamalā" style="height: 100%; object-fit: contain;">
+                        <img src="images/10_Kamalā.png" alt="Goddess Kamalā" data-i18n-alt="alt.kamala" style="height: 100%; object-fit: contain;">
                     </div>
-                    <h3 style="color: #a7f3d0; font-weight: bold; font-size: 1.1rem;">10. Kamalā</h3>
-                    <p style="font-size: 0.9rem;"><strong>For:</strong> Financial abundance, property gains, family prosperity, removing poverty</p>
+                    <h3 style="color: #a7f3d0; font-weight: bold; font-size: 1.1rem;" data-i18n="mahavidyas.21">10. Kamalā</h3>
+                    <p style="font-size: 0.9rem;" data-i18n="mahavidyas.22"><strong>For:</strong> Financial abundance, property gains, family prosperity, removing poverty</p>
                 </div>
             </div>
         </div>
@@ -949,133 +1022,133 @@
 	<section id="pricing" style="background: var(--dark-bg);">
      <div class="container">
         <div class="info-box">
-            <h3><i class="fas fa-info-circle"></i> Ritual Schedule Explanation</h3>
-            <p>Our rituals follow a specific schedule over 10 days. The Tāntric Beejātmak Chandikā Yajna is performed daily from sunrise to mid-noon. The Daśa Mahāvidyā Anuṣṭhāna involves connecting with one Mahāvidyā goddess each day through specialized rituals.</p>
+            <h3><i class="fas fa-info-circle"></i> <span data-i18n="pricing.1">Ritual Schedule Explanation</span></h3>
+            <p data-i18n="pricing.2">Our rituals follow a specific schedule over 10 days. The Tāntric Beejātmak Chandikā Yajna is performed daily from sunrise to mid-noon. The Daśa Mahāvidyā Anuṣṭhāna involves connecting with one Mahāvidyā goddess each day through specialized rituals.</p>
         </div>
         
         <div class="pricing-cards">
             <!-- Basic Package -->
             <div class="pricing-card">
-                <h2>Basic Package</h2>
+                <h2 data-i18n="pricing.3">Basic Package</h2>
                 <div class="price">₹11,100</div>
-                <div class="duration">1-Day Participation</div>
+                <div class="duration" data-i18n="pricing.4">1-Day Participation</div>
                 
                 <div class="rituals">
-                    <h3>Includes:</h3>
+                    <h3 data-i18n="pricing.5">Includes:</h3>
                     <div class="ritual-item">
                         <div class="ritual-icon"><i class="fas fa-fire"></i></div>
                         <div class="ritual-details">
-                            <div class="ritual-name">Tāntric Beejātmak Chandikā Yajna</div>
-                            <div class="ritual-desc">1 full day ritual (sunrise to mid-noon)</div>
+                            <div class="ritual-name" data-i18n="pricing.6">Tāntric Beejātmak Chandikā Yajna</div>
+                            <div class="ritual-desc" data-i18n="pricing.7">1 full day ritual (sunrise to mid-noon)</div>
                         </div>
                     </div>
                     <div class="ritual-item">
                         <div class="ritual-icon"><i class="fas fa-seedling"></i></div>
                         <div class="ritual-details">
-                            <div class="ritual-name">720 Beejākshara Offerings</div>
-                            <div class="ritual-desc">Focused on your intentions</div>
+                            <div class="ritual-name" data-i18n="pricing.8">720 Beejākshara Offerings</div>
+                            <div class="ritual-desc" data-i18n="pricing.9">Focused on your intentions</div>
                         </div>
                     </div>
                 </div>
                 
                 <ul class="benefits-list">
-                    <li>Basic protection from negative energies</li>
-                    <li>Remote meditation of energies during the ritual</li>
-                    <li>Small prasad delivery</li>
+                    <li data-i18n="pricing.10">Basic protection from negative energies</li>
+                    <li data-i18n="pricing.11">Remote meditation of energies during the ritual</li>
+                    <li data-i18n="pricing.12">Small prasad delivery</li>
                 </ul>
                 
-                <a href="#register" class="btn">Select Package</a>
+                <a href="#register" class="btn" data-i18n="pricing.13">Select Package</a>
             </div>
             
             <!-- Popular Package -->
             <div class="pricing-card card-highlight">
-                <div class="popular">MOST POWERFUL</div>
-                <h2>Complete Tāntric Experience</h2>
+                <div class="popular" data-i18n="pricing.14">MOST POWERFUL</div>
+                <h2 data-i18n="pricing.15">Complete Tāntric Experience</h2>
                 <div class="price">₹51,100</div>
-                <div class="duration">10-Day Complete Journey</div>
+                <div class="duration" data-i18n="pricing.16">10-Day Complete Journey</div>
                 
                 <div class="rituals">
-                    <h3>Includes:</h3>
+                    <h3 data-i18n="pricing.17">Includes:</h3>
                     <div class="ritual-item">
                         <div class="ritual-icon"><i class="fas fa-fire"></i></div>
                         <div class="ritual-details">
-                            <div class="ritual-name">Tāntric Beejātmak Chandikā Yajna</div>
-                            <div class="ritual-desc">Daily for 10 days (sunrise to mid-noon)</div>
+                            <div class="ritual-name" data-i18n="pricing.18">Tāntric Beejātmak Chandikā Yajna</div>
+                            <div class="ritual-desc" data-i18n="pricing.19">Daily for 10 days (sunrise to mid-noon)</div>
                         </div>
                     </div>
                     <div class="ritual-item">
                         <div class="ritual-icon"><i class="fas fa-seedling"></i></div>
                         <div class="ritual-details">
-                            <div class="ritual-name">7,200+ Beejākshara Offerings</div>
-                            <div class="ritual-desc">With Tantratmak Saptashati Beejaksharas</div>
+                            <div class="ritual-name" data-i18n="pricing.20">7,200+ Beejākshara Offerings</div>
+                            <div class="ritual-desc" data-i18n="pricing.21">With Tantratmak Saptashati Beejaksharas</div>
                         </div>
                     </div>
                     <div class="ritual-item">
                         <div class="ritual-icon"><i class="fas fa-star"></i></div>
                         <div class="ritual-details">
-                            <div class="ritual-name">Complete Daśa Mahāvidyā Anuṣṭhāna</div>
-                            <div class="ritual-desc">One Mahāvidyā goddess each day with Mudras and Yantras</div>
+                            <div class="ritual-name" data-i18n="pricing.22">Complete Daśa Mahāvidyā Anuṣṭhāna</div>
+                            <div class="ritual-desc" data-i18n="pricing.23">One Mahāvidyā goddess each day with Mudras and Yantras</div>
                         </div>
                     </div>
                 </div>
                 
                 <ul class="benefits-list">
-                    <li>Personalized guidance from Tantric priests</li>
-                    <li>Sacred gift set with empowered yantra</li>
-                    <li>Premium prasad delivery</li>
-                    <li>Complete transformation experience</li>
+                    <li data-i18n="pricing.24">Personalized guidance from Tantric priests</li>
+                    <li data-i18n="pricing.25">Sacred gift set with empowered yantra</li>
+                    <li data-i18n="pricing.26">Premium prasad delivery</li>
+                    <li data-i18n="pricing.27">Complete transformation experience</li>
                 </ul>
                 
-                <a href="#register" class="btn">Select Package</a>
+                <a href="#register" class="btn" data-i18n="pricing.28">Select Package</a>
             </div>
             
             <!-- Focused Package -->
             <div class="pricing-card">
-                <h2>Specific Mahāvidyā Focus</h2>
+                <h2 data-i18n="pricing.29">Specific Mahāvidyā Focus</h2>
                 <div class="price">₹21,100</div>
-                <div class="duration">3-Day Intensive Ritual</div>
+                <div class="duration" data-i18n="pricing.30">3-Day Intensive Ritual</div>
                 
                 <div class="rituals">
-                    <h3>Includes:</h3>
+                    <h3 data-i18n="pricing.31">Includes:</h3>
                     <div class="ritual-item">
                         <div class="ritual-icon"><i class="fas fa-fire"></i></div>
                         <div class="ritual-details">
-                            <div class="ritual-name">Tāntric Beejātmak Chandikā Yajna</div>
-                            <div class="ritual-desc">3 days of focused rituals</div>
+                            <div class="ritual-name" data-i18n="pricing.32">Tāntric Beejātmak Chandikā Yajna</div>
+                            <div class="ritual-desc" data-i18n="pricing.33">3 days of focused rituals</div>
                         </div>
                     </div>
                     <div class="ritual-item">
                         <div class="ritual-icon"><i class="fas fa-star"></i></div>
                         <div class="ritual-details">
-                            <div class="ritual-name">One Mahāvidyā Focus</div>
-                            <div class="ritual-desc">Choose one Mahāvidyā for specific problems</div>
+                            <div class="ritual-name" data-i18n="pricing.34">One Mahāvidyā Focus</div>
+                            <div class="ritual-desc" data-i18n="pricing.35">Choose one Mahāvidyā for specific problems</div>
                         </div>
                     </div>
                     <div class="ritual-item">
                         <div class="ritual-icon"><i class="fas fa-brain"></i></div>
                         <div class="ritual-details">
-                            <div class="ritual-name">Dhyana Dharana Practices</div>
-                            <div class="ritual-desc">Deep meditation techniques for your specific needs</div>
+                            <div class="ritual-name" data-i18n="pricing.36">Dhyana Dharana Practices</div>
+                            <div class="ritual-desc" data-i18n="pricing.37">Deep meditation techniques for your specific needs</div>
                         </div>
                     </div>
                 </div>
                 
                 <ul class="benefits-list">
-                    <li>Personalized mantras and offerings</li>
-                    <li>Specialized yantra for your needs</li>
-                    <li>Detailed consultation with Tantric priest</li>
-                    <li>Focused solution for specific challenges</li>
+                    <li data-i18n="pricing.38">Personalized mantras and offerings</li>
+                    <li data-i18n="pricing.39">Specialized yantra for your needs</li>
+                    <li data-i18n="pricing.40">Detailed consultation with Tantric priest</li>
+                    <li data-i18n="pricing.41">Focused solution for specific challenges</li>
                 </ul>
                 
-                <a href="#register" class="btn">Select Package</a>
+                <a href="#register" class="btn" data-i18n="pricing.42">Select Package</a>
             </div>
         </div>
         
         <div class="info-box">
-            <h3><i class="fas fa-calendar-alt"></i> Ritual Timeline</h3>
-            <p><strong>Daily Schedule:</strong> Tāntric Beejātmak Chandikā Yajna performed from sunrise to mid-noon each day.</p>
-            <p><strong>10-Day Progression:</strong> Each day of the Daśa Mahāvidyā Anuṣṭhāna focuses on a different wisdom goddess, creating a complete spiritual transformation journey.</p>
-            <p><strong>Location:</strong> Rituals are performed at powerful sacred places including the Sahyadri hill ranges, river banks, and Gosalas of Karnataka.</p>
+            <h3><i class="fas fa-calendar-alt"></i> <span data-i18n="pricing.43">Ritual Timeline</span></h3>
+            <p data-i18n="pricing.44"><strong>Daily Schedule:</strong> Tāntric Beejātmak Chandikā Yajna performed from sunrise to mid-noon each day.</p>
+            <p data-i18n="pricing.45"><strong>10-Day Progression:</strong> Each day of the Daśa Mahāvidyā Anuṣṭhāna focuses on a different wisdom goddess, creating a complete spiritual transformation journey.</p>
+            <p data-i18n="pricing.46"><strong>Location:</strong> Rituals are performed at powerful sacred places including the Sahyadri hill ranges, river banks, and Gosalas of Karnataka.</p>
         </div>
     </div>
     </section>
@@ -1083,20 +1156,23 @@
     <!-- Footer -->
     <footer style="background: var(--dark-bg); padding: 60px 20px; text-align: center;">
         <div class="container">
-            <h3 style="color: var(--gold); margin-bottom: 20px;">Connect With Divine Energy</h3>
-            <p style="max-width: 600px; margin: 0 auto 30px;">Experience the transformative power of authentic Tantric practices passed down through generations.</p>
+            <h3 style="color: var(--gold); margin-bottom: 20px;" data-i18n="footer.1">Connect With Divine Energy</h3>
+            <p style="max-width: 600px; margin: 0 auto 30px;" data-i18n="footer.2">Experience the transformative power of authentic Tantric practices passed down through generations.</p>
             
             <div class="floral-divider">
                 <span>ॐ</span>
             </div>
             
-            <p style="margin-top: 30px; color: #a78bfa;">© 2025 Vedavidhya Consultants & Mahakal Tantra Jyotish. All rights reserved.</p>
+            <p style="margin-top: 30px; color: #a78bfa;" data-i18n="footer.3">© 2025 Vedavidhya Consultants & Mahakal Tantra Jyotish. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
         // Form validation
-        document.getElementById('ritual-registration').addEventListener('submit', function(e) {
+        // (guarded: the registration form isn't on the page yet, and a missing
+        // element here used to throw and stop the FAQ toggle below from working)
+        const registrationForm = document.getElementById('ritual-registration');
+        if (registrationForm) registrationForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             let isValid = true;
@@ -1180,5 +1256,6 @@
             });
         });
     </script>
+    <script src="i18n.js"></script>
 </body>
 </html>
